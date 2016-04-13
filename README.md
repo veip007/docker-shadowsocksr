@@ -20,13 +20,3 @@ ShadowsocksR Server 的 Dockerfile
     SSR_PROTOCOL: 混淆协议
     SSR_TIMEOUT: 超时时间
     SSR_OBFS: 混淆模式
-
-已测试的可以直接部署在国内灵雀云(alauda.cn)
-
-部署方法:
-
-选择第三方镜像 index.alauda.cn/handsonic/shadowsocksr
-
-修改 tcp 端口
-
-添加环境变量的值，其中 SSR_SERVER_PORT 要和之前修改的端口保持一致
