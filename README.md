@@ -26,4 +26,4 @@ Quick Start
 -----------
 
 
-    docker run -d -p 8388:8388/tcp -p 8388:8388/udp smounives/shadowsocksr-docker -e SSR_SERVER_PORT=8388 -e SSR_PASSWORD=password -e SSR_METHOD=aes-256-cfb -e SSR_PROTOCOL=auth_sha1_compatible -e SSR_OBFS=http_simple_compatible
+    docker run -d -p 8388:8388/tcp -p 8388:8388/udp -e SSR_SERVER_PORT=8388 -e SSR_PASSWORD=password -e SSR_METHOD=aes-256-cfb -e SSR_PROTOCOL=auth_sha1_compatible -e SSR_OBFS=http_simple_compatible smounives/shadowsocksr-docker
