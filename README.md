@@ -1,29 +1,56 @@
-# ShadowsocksR for Docker
+# ShadowsocksR-Docker
+==================
 
-ShadowsocksR Server 的 Dockerfile
+Thanks to the developer of Shadowsocks [@clowwindy](https://github.com/clowwindy)
 
-感谢 Shadowsocks 原作者 [@clowwindy](https://github.com/clowwindy)
+Thanks to the developer of ShadowsocksR [@breakwa11](https://github.com/breakwa11)
 
-感谢 ShadowsocksR 作者 [@breakwa11](https://github.com/breakwa11)
-
-##使用方法
-自己构建 Docker 镜像或者拉取 Docker Hub 上的:
-
-    docker pull smounives/shadowsocksr-docker
-
-修改各个环境变量的值:
-
-    SSR_SERVER_ADDR: 服务器IP
-    SSR_SERVER_PORT: 服务器端口
-    SSR_PASSWORD: 密码
-    SSR_METHOD: 加密方式
-    SSR_PROTOCOL: 混淆协议
-    SSR_TIMEOUT: 超时时间
-    SSR_OBFS: 混淆模式
-
+This Dockerfile builds an image with the Python implementation of [ShadowsocksR](https://github.com/breakwa11/shadowsocks/tree/manyuser). Based on Alpine image(A lightweight Linux ).
 
 Quick Start
 -----------
 
+This image uses ENTRYPOINT to run the containers as an executable. 
 
-    docker run -d -p 8388:8388/tcp -p 8388:8388/udp -e SSR_SERVER_PORT=8388 -e SSR_PASSWORD=password -e SSR_METHOD=aes-256-cfb -e SSR_PROTOCOL=auth_sha1_compatible -e SSR_OBFS=http_simple_compatible smounives/shadowsocksr-docker
+    docker run -d -p 8388:8388/tcp -p 8388:8388/udp smounives/shadowsocksr-docker -s 0.0.0.0 -p 8388 -k mypassword -m aes-256-cfb -o tls1.2_ticket_auth_compatible -P auth_sha1_v2_compatible
+
+You can configure the service to run on a port of your choice. Just make sure the port number given to Docker is the same as the one given to shadowsocks. Also, it is  highly recommended that you store the shadowsocks password in an environment variable as shown above. This way the password will not show in plain text when you run `docker ps`.
+
+For more command line options.
+
+More Options
+-----------
+
+```
+usage: ssserver [OPTION]...
+A fast tunnel proxy that helps you bypass firewalls.
+
+You can supply configurations via either config file or command line arguments.
+
+Proxy options:
+  -c CONFIG              path to config file
+  -s SERVER_ADDR         server address, default: 0.0.0.0
+  -p SERVER_PORT         server port, default: 8388
+  -k PASSWORD            password
+  -m METHOD              encryption method, default: aes-256-cfb
+  -P PROTOCOL            protocol plugin, default: verify_simple
+  -o OBFS                obfsplugin, default: http_simple
+  -t TIMEOUT             timeout in seconds, default: 300
+  --fast-open            use TCP_FASTOPEN, requires Linux 3.7+
+  --workers WORKERS      number of workers, available on Unix/Linux
+  --forbidden-ip IPLIST  comma seperated IP list forbidden to connect
+  --manager-address ADDR optional server manager UDP address, see wiki
+
+General options:
+  -h, --help             show this help message and exit
+  -d start/stop/restart  daemon mode
+  --pid-file PID_FILE    pid file for daemon mode
+  --log-file LOG_FILE    log file for daemon mode
+  --user USER            username to run as
+  -v, -vv                verbose mode
+  -q, -qq                quiet mode, only show warnings/errors
+  --version              show version information
+
+```
+
+[More help](https://github.com/breakwa11/shadowsocks-rss)
