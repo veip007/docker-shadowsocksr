@@ -1,4 +1,4 @@
-# ShadowsocksR-Docker
+ShadowsocksR-Docker
 ==================
 
 Thanks to the developer of Shadowsocks [@clowwindy](https://github.com/clowwindy)
