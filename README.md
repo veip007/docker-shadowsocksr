@@ -12,7 +12,7 @@ Quick Start
 
 This image uses ENTRYPOINT to run the containers as an executable. 
 
-    docker run -d -p 8388:8388/tcp -p 8388:8388/udp smounives/shadowsocksr-docker -s 0.0.0.0 -p 8388 -k mypassword -m aes-256-cfb -o tls1.2_ticket_auth_compatible -P auth_sha1_v2_compatible
+    docker run -d -p 8388:8388/tcp -p 8388:8388/udp smounives/shadowsocksr-docker -s 0.0.0.0 -p 8388 -k mypassword -m aes-256-cfb -o tls1.2_ticket_auth_compatible -O auth_sha1_v2_compatible
 
 You can configure the service to run on a port of your choice. Just make sure the port number given to Docker is the same as the one given to ShadowsocksR.
 
@@ -33,7 +33,7 @@ Proxy options:
   -p SERVER_PORT         server port, default: 8388
   -k PASSWORD            password
   -m METHOD              encryption method, default: aes-256-cfb
-  -P PROTOCOL            protocol plugin, default: verify_simple
+  -O PROTOCOL            protocol plugin, default: verify_simple
   -o OBFS                obfsplugin, default: http_simple
   -t TIMEOUT             timeout in seconds, default: 300
   --fast-open            use TCP_FASTOPEN, requires Linux 3.7+
