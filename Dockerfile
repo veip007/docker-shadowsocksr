@@ -13,9 +13,9 @@ ENV SERVER_ADDR 0.0.0.0
 ENV SERVER_PORT 8388
 ENV PASSWORD    p@ssw0rd
 ENV METHOD      aes-256-cfb
-ENV PROTOCOL    auth_sha1_v2_compatible
-ENV OBFS        http_simple
-ENV TIMEOUT     60
+ENV PROTOCOL    auth_sha1_compatible
+ENV OBFS        http_simple_compatible
+ENV TIMEOUT     300
 ENV DNS_ADDR    8.8.8.8
 
 EXPOSE $SERVER_PORT/tcp
