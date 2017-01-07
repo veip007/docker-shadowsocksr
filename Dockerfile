@@ -4,9 +4,11 @@
 
 FROM alpine:3.4
 
+ENV SSR_URL https://github.com/shadowsocksr/shadowsocksr/archive/manyuser.zip
+
 RUN set -ex \
     && apk add --no-cache libsodium py-pip \
-    && pip --no-cache-dir install https://github.com/shadowsocksr/shadowsocksr/archive/manyuser.zip
+    && pip --no-cache-dir install $SSR_URL
 
 ENV SERVER_ADDR 0.0.0.0
 ENV SERVER_PORT 8388
