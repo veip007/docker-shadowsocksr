@@ -24,10 +24,10 @@ EXPOSE $SERVER_PORT/udp
 
 WORKDIR /usr/bin/
 
-CMD /usr/bin/ssserver -s $SERVER_ADDR \
-                      -p $SERVER_PORT \
-                      -k $PASSWORD    \
-                      -m $METHOD      \
-                      -O $PROTOCOL    \
-                      -o $OBFS        \
-                      -t $TIMEOUT
+CMD ssserver -s $SERVER_ADDR \
+             -p $SERVER_PORT \
+             -k $PASSWORD    \
+             -m $METHOD      \
+             -O $PROTOCOL    \
+             -o $OBFS        \
+             -t $TIMEOUT
