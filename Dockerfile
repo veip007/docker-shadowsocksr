@@ -8,7 +8,8 @@ ENV SSR_URL https://github.com/shadowsocksr/shadowsocksr/archive/manyuser.zip
 
 RUN set -ex \
     && apk add --no-cache libsodium py-pip \
-    && pip --no-cache-dir install $SSR_URL
+    && pip --no-cache-dir install $SSR_URL \
+    && rm -rf /var/cache/apk
 
 ENV SERVER_ADDR 0.0.0.0
 ENV SERVER_PORT 8388
