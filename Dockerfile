@@ -18,7 +18,6 @@ ENV METHOD      aes-256-cfb
 ENV PROTOCOL    auth_sha1_compatible
 ENV OBFS        http_simple_compatible
 ENV TIMEOUT     300
-ENV DNS_ADDR    8.8.8.8
 
 EXPOSE $SERVER_PORT/tcp
 EXPOSE $SERVER_PORT/udp
