@@ -4,7 +4,7 @@
 
 FROM alpine:3.4
 
-ENV SSR_URL https://github.com/shadowsocksr/shadowsocksr/archive/manyuser.zip
+ENV SSR_URL https://github.com/shadowsocksr-backup/shadowsocksr/archive/manyuser.zip
 
 RUN set -ex \
     && apk --update add --no-cache libsodium py-pip \
