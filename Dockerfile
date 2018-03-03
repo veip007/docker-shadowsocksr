@@ -2,7 +2,7 @@
 # Dockerfile for ShadowsocksR
 #
 
-FROM alpine:3.6
+FROM alpine:3.7
 
 ENV SSR_URL https://github.com/shadowsocksr-backup/shadowsocksr/archive/manyuser.zip
 
