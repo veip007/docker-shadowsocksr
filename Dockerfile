@@ -11,7 +11,7 @@ WORKDIR /etc
 
 RUN set -ex \
     && apk --update add --no-cache python libsodium rng-tools curl \
-    && curl -sSL $SS_URL | tar xz \
+    && curl -sSL $SSR_URL | tar xz \
     && apk del curl \
     && rm -rf /var/cache/apk
 
