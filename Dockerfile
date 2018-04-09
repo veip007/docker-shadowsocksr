@@ -4,11 +4,15 @@
 
 FROM alpine:3.7
 
-ENV SSR_URL https://github.com/shadowsocksrr/shadowsocksr/archive/akkariiin/master.zip
+ENV SSR_URL https://github.com/shadowsocksrr/shadowsocksr/archive/akkariiin/master.tar.gz
+ENV SSR_DIR shadowsocksr-akkariiin-master
+
+WORKDIR /etc
 
 RUN set -ex \
-    && apk --update add --no-cache libsodium py-pip \
-    && pip --no-cache-dir install $SSR_URL \
+    && apk --update add --no-cache python libsodium rng-tools curl \
+    && curl -sSL $SS_URL | tar xz \
+    && apk del curl \
     && rm -rf /var/cache/apk
 
 ENV SERVER_ADDR 0.0.0.0
@@ -22,12 +26,13 @@ ENV TIMEOUT     300
 EXPOSE $SERVER_PORT/tcp
 EXPOSE $SERVER_PORT/udp
 
-WORKDIR /usr/bin/
+WORKDIR /etc/$SSR_DIR/shadowsocks
 
-CMD ssserver -s $SERVER_ADDR \
-             -p $SERVER_PORT \
-             -k $PASSWORD    \
-             -m $METHOD      \
-             -O $PROTOCOL    \
-             -o $OBFS        \
-             -t $TIMEOUT
+CMD python server.py \
+           -s $SERVER_ADDR \
+           -p $SERVER_PORT \
+           -k $PASSWORD    \
+           -m $METHOD      \
+           -O $PROTOCOL    \
+           -o $OBFS        \
+           -t $TIMEOUT
