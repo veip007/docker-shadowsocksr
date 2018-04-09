@@ -4,7 +4,7 @@
 
 FROM alpine:3.7
 
-ENV SSR_URL https://github.com/shadowsocksr-backup/shadowsocksr/archive/manyuser.zip
+ENV SSR_URL https://github.com/shadowsocksrr/shadowsocksr/archive/akkariiin/master.zip
 
 RUN set -ex \
     && apk --update add --no-cache libsodium py-pip \
@@ -14,9 +14,9 @@ RUN set -ex \
 ENV SERVER_ADDR 0.0.0.0
 ENV SERVER_PORT 8388
 ENV PASSWORD    p@ssw0rd
-ENV METHOD      aes-256-cfb
-ENV PROTOCOL    auth_sha1_compatible
-ENV OBFS        http_simple_compatible
+ENV METHOD      chacha20-ietf
+ENV PROTOCOL    auth_aes128_md5
+ENV OBFS        tls1.2_ticket_auth
 ENV TIMEOUT     300
 
 EXPOSE $SERVER_PORT/tcp
