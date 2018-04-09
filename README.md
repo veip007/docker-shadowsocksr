@@ -1,3 +1,3 @@
-:whale: Dockerfiles for [ShadowsocksR](https://github.com/shadowsocksr-backup/shadowsocksr) Server
+:whale: Dockerfiles for [ShadowsocksR](https://github.com/shadowsocksrr/shadowsocksr) Server
 
 forked from smounives/ShadowsocksR-Docker
